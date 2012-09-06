@@ -1,0 +1,19 @@
+#!/bin/sh
+
+echo '@@@@@@@@@@@@@@@@@@@@RESTATIS@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+date1=$1
+date2=$2
+secdate1=`date -d $date1 +%s`
+secdate2=`date -d $date2 +%s`
+while [ $secdate1 -le $secdate2 ]
+do
+	date1=`date -d @$secdate1 +%Y%m%d`
+	echo $date1
+	
+	sh /v5/logs/LogTree/File_tar.sh $opdate $opdate /v4/tmplogs /v3/LogTrees/
+	sh /v5/logs/LogTree/Stat_tree_client.sh $opdate $opdate /v3/LogTrees/ /v5/logs/LogTree/Log/
+	sh /v5/logs/iPad/DayToRun.sh $opdate $opdate
+
+	secdate1=$(($secdate1 + 86400))
+
+done
