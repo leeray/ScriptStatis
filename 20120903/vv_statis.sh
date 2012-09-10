@@ -1,10 +1,14 @@
 #!/bin/sh
 
-PROGRAM_PATH=/opt/Statis/OtherStatis/20120903
-HADOOP_PATH=/usr/share/hadoop-1.0.3
+PROGRAM_PATH=/vol/users/xiazhiquan/Statis/20120903
+#PROGRAM_PATH=/opt/Statis/OtherStatis/20120903
+HADOOP_PATH=$HADOOP_HOME
+#HADOOP_PATH=/usr/share/hadoop-1.0.3
+
 HADOOP_LOG_PATH='leeray/log'
-HADOOP_HASH_PATH='/home/shiwei/wireless/hash/'
-HADOOP_RESULT_PATH='leeray/statis'
+HADOOP_HASH_PATH='/home/shiwei/wireless/hash'
+HADOOP_RESULT_PATH='/tmp/xiazhiquan/leeray/statis'
+#HADOOP_RESULT_PATH='leeray/statis'
 
 date=$1
 date_path=`date -d $date +%Y/%m/%d`
@@ -28,5 +32,5 @@ $cmd
 
 cmd="python $PROGRAM_PATH/vv_statis_merge.py $PROGRAM_PATH/vv_statis_$date.log $PROGRAM_PATH/vv_statis_"$date"_result.log"
 echo $cmd
-$cmd
+#$cmd
 
